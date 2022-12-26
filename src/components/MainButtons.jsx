@@ -4,7 +4,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import MainContext from "../context/MainContext";
 
 function Buttons() {

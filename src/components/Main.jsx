@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainContext from "../context/MainContext";
 import List from "./List";
 import Buttons from "./MainButtons";
