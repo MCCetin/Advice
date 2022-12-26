@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Sono:wght@400;500;600&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,38 +31,79 @@ body {
   font-family: "Sono", sans-serif;
   font-size: 30px;
 }
-
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
 .container {
   display: flex;
-  flex-direction: row;
+  height: 100vh;
+  width: 100%;
 }
-
-.main {
-  width: 60%;
+.hamburgerMenu{
+  z-index: 10;
   display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.main {
+  width: 100%;
+  transform: translate(-55px,-40px);
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 40px;
+}
+.advice {
+  text-align: center;
 }
 button {
   padding: 10px;
   cursor: pointer;
+  outline: none;
+  border: 0px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  margin-left: 12px;
+  background-color: transparent;
+  color: white;
 }
-nav {
+button:hover {
+  color: rgb(45, 174, 82);
+  transform: scale(1.4);
+}
+.navbar {
   height: 100vh;
-  width: 30%;
+  width: 35%;
+  margin-left: 0px;
   background: black;
-  display: flex;
-  flex-direction: column;
-  /* margin-left: -465px; */
-  transition: 0.5s;
-  z-index: 1;
+  z-index: 11;
   overflow: auto;
 }
-
+.loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  font-size: 24px;
+}
 .saved-li {
-    display: flex;
-    font-size: 12px;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid white;
-    padding: 20px;
-  }
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+  padding: 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.saved-li:hover {
+  background-color: rgb(78, 78, 78);
+  opacity: 0.9;
+}

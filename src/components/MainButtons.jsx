@@ -3,21 +3,32 @@ import Button from "./Button";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
+
+import { useContext, useState } from "react";
 import MainContext from "../context/MainContext";
 
 function Buttons() {
-  const { current, setCurrent, saved, setSaved } = useContext(MainContext);
+  const { current, setCurrent, saved, setSaved, setToggle, setIsLoading } =
+    useContext(MainContext);
 
-  async function getData() {
-    const { slip } = await (
-      await fetch("https://api.adviceslip.com/advice")
-    ).json();
-    setCurrent({
-      advice: slip.advice,
-      isFavorite: false,
-      id: Date.now(),
-    });
+  function getData() {
+    setIsLoading(true);
+    setTimeout(async () => {
+      try {
+        const { slip } = await (
+          await fetch("https://api.adviceslip.com/advice")
+        ).json();
+        setCurrent({
+          advice: slip.advice,
+          isFavorite: false,
+          id: Date.now(),
+        });
+      } catch (error) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 2000);
   }
 
   function redirect() {
@@ -30,6 +41,7 @@ function Buttons() {
   }
 
   function favorite() {
+    setToggle(true);
     setCurrent({
       ...current,
       isFavorite: (current.isFavorite = !current.isFavorite),
