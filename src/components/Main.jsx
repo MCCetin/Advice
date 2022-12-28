@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainContext from "../context/MainContext";
 import List from "./List";
 import Buttons from "./MainButtons";
@@ -16,9 +16,18 @@ const initialValue = {
 
 function Main() {
   const [current, setCurrent] = useState(initialValue);
-  const [saved, setSaved] = useState([]);
+  const [saved, setSaved] = useState(getFromLocalStorage());
   const [toggle, setToggle] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(saved));
+  }, [saved]);
+
+  function getFromLocalStorage() {
+    const list = localStorage.getItem("list");
+    return JSON.parse(list) ?? [];
+  }
 
   return (
     <div className="container">
